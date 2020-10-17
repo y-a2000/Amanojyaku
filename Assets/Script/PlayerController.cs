@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float speed;
     private Transform PlayerTransform;
     private Transform CameraTransform;
+    private float ii;
     // Use this for initialization
     void Start()
     {
@@ -24,8 +25,37 @@ public class PlayerController : MonoBehaviour
         float X_Rotation = Input.GetAxis("Mouse X");
         float Y_Rotation = Input.GetAxis("Mouse Y");
         PlayerTransform.transform.Rotate(0, X_Rotation, 0);
-        CameraTransform.transform.Rotate(-Y_Rotation, 0, 0);
+        
+        ii = Camera.transform.localEulerAngles.x;
+        if (ii > 334 && ii < 360 || ii > 0 && 79 > ii)
+        {
+            CameraTransform.transform.Rotate(-Y_Rotation, 0, 0);
+            float kk = Y_Rotation;
+        }
+        else
+        {
 
+            if (ii > 300)
+            {
+
+                if (Input.GetAxis("Mouse Y") < 0)
+                {
+
+                    CameraTransform.transform.Rotate(-Y_Rotation, 0, 0);
+
+                }
+            }
+            else
+            {
+                if (Input.GetAxis("Mouse Y") > 0)
+                {
+
+                    CameraTransform.transform.Rotate(-Y_Rotation, 0, 0);
+
+                }
+
+            }
+        }
 
         float angleDir = PlayerTransform.transform.eulerAngles.y * (Mathf.PI / 180.0f);
         Vector3 dir1 = new Vector3(Mathf.Sin(angleDir), 0, Mathf.Cos(angleDir));
