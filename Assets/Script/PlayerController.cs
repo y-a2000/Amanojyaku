@@ -7,16 +7,18 @@ public class PlayerController : MonoBehaviour
     public GameObject Player;
     public GameObject Camera;
     public float speed;
+    
     private Transform PlayerTransform;
     private Transform CameraTransform;
     private float ii;
+    
     // Use this for initialization
     void Start()
     {
 
         PlayerTransform = transform.parent;
         CameraTransform = GetComponent<Transform>();
-
+        
     }
 
     // Update is called once per frame
@@ -79,5 +81,6 @@ public class PlayerController : MonoBehaviour
             PlayerTransform.transform.position += -dir1 * speed * Time.deltaTime;
         }
 
+        
     }
 }
