@@ -10,6 +10,8 @@ public class Battery : MonoBehaviour
     public float Decrease; //1％減るまでの時間
     public float ChargeTime; //1％チャージのためのタイマー
     public float ChargeCoolTime; //n秒で1％チャージできる
+
+    public int SubBattery; //予備バッテリー
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +20,7 @@ public class Battery : MonoBehaviour
         BatteryAmount = 100;
         CountTime = Decrease; //タイマーを1％減るまでの時間に設定
         ChargeCoolTime = 0.5f;
+        SubBattery = 2; //予備2つとメインひとつで計3つ
     }
 
     // Update is called once per frame
@@ -31,26 +34,42 @@ public class Battery : MonoBehaviour
         
         if (CountTime < 0) //0秒を下回ったら1％減り、減るまでの時間がリセット
         {
-            BatteryAmount -= 1;
+            BatteryAmount--;
             CountTime = Decrease;
         }
 
-        if (Input.GetKeyDown(KeyCode.Z) && BatteryAmount >= 20)
+        if (Input.GetKeyDown(KeyCode.Z))
         {
-            BatteryAmount -= 5;
+            if (BatteryAmount >= 20 || SubBattery != 0)
+            {
+                BatteryAmount -= 5;
+            }
         }
 
-        if (BatteryAmount < 0)
+        if (BatteryAmount < 1)
         {
-            SceneManager.LoadScene("GameOver");
+            if (SubBattery > 0)
+            {
+                BatteryAmount = 100;
+                SubBattery--;
+            }
+            else
+            {
+                SceneManager.LoadScene("GameOver");
+            }
         }
     }
     public void BatteryCharge() //充電スポットに触れた時に発動
     {
         if (ChargeTime < 0) //再び100％に
         {
-            BatteryAmount += 1;
+            BatteryAmount++;
             ChargeTime = ChargeCoolTime;
+            if (BatteryAmount == 100 && SubBattery < 2)
+            {
+                BatteryAmount = 1;
+                SubBattery++;
+            }
         } 
         CountTime = Decrease;
         ChargeTime -= Time.deltaTime;
@@ -61,7 +80,7 @@ public class Battery : MonoBehaviour
     }
     public void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.name == "ChargeSpot")
+        if (other.gameObject.name == "ChargeSpot") //ChargeSpotに触れたらBatterCharge関数を起動
         {
             BatteryCharge();
         }

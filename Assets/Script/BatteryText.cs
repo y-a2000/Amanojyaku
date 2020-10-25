@@ -17,6 +17,6 @@ public class BatteryText : MonoBehaviour
     void Update()
     {
         BatteryRemain = battery.BatteryAmount;
-        GetComponent<Text>().text = "バッテリー残量: " + BatteryRemain + "%";
+        GetComponent<Text>().text = "現在のバッテリー残量: " + BatteryRemain + "%";
     }
 }
