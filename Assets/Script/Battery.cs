@@ -16,7 +16,7 @@ public class Battery : MonoBehaviour
     void Start()
     {
         //初期設定
-        Decrease = 5;
+        Decrease = 10;
         BatteryAmount = 100;
         CountTime = Decrease; //タイマーを1％減るまでの時間に設定
         ChargeCoolTime = 0.5f;
@@ -30,7 +30,15 @@ public class Battery : MonoBehaviour
         {
             BatteryAmount = 100;
         }
-        CountTime -= Time.deltaTime; //時間で減る
+        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftControl))
+        {
+            CountTime -= Time.deltaTime * 2; //時間で減る
+        }
+        else
+        {
+            CountTime -= Time.deltaTime; //時間で減る
+        }
+            
         
         if (CountTime < 0) //0秒を下回ったら1％減り、減るまでの時間がリセット
         {

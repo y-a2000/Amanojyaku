@@ -66,7 +66,14 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W))
         {
-            PlayerTransform.transform.position += dir1 * speed * Time.deltaTime;
+            if (Input.GetKey(KeyCode.LeftControl))
+            {
+                PlayerTransform.transform.position += dir1 * speed * Time.deltaTime * 2;
+            }
+            else
+            {
+                PlayerTransform.transform.position += dir1 * speed * Time.deltaTime;
+            }
         }
         if (Input.GetKey(KeyCode.A))
         {
