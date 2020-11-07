@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public GameObject Player;
     public GameObject Camera;
     public float speed;
+    public float accel;
     
     private Transform PlayerTransform;
     private Transform CameraTransform;
@@ -81,6 +82,7 @@ public class PlayerController : MonoBehaviour
             PlayerTransform.transform.position += -dir1 * speed * Time.deltaTime;
         }
 
-        
+       
+
     }
 }
