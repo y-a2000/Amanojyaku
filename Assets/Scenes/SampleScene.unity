@@ -279,7 +279,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -326,7 +326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 495595214}
   Camera: {fileID: 442084240}
-  speed: 3
+  speed: 5
 --- !u!1 &495595214
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,9 +341,9 @@ GameObject:
   - component: {fileID: 495595216}
   - component: {fileID: 495595215}
   - component: {fileID: 495595222}
+  - component: {fileID: 495595223}
   - component: {fileID: 495595220}
   - component: {fileID: 495595221}
-  - component: {fileID: 495595223}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
