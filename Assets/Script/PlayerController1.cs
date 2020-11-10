@@ -2,24 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController1 : MonoBehaviour
 {
     public GameObject Player;
     public GameObject Camera;
     public float speed;
     public float accel;
-    
+
     private Transform PlayerTransform;
     private Transform CameraTransform;
     private float ii;
-    
+
     // Use this for initialization
     void Start()
     {
 
         PlayerTransform = transform.parent;
         CameraTransform = GetComponent<Transform>();
-        
+
     }
 
     // Update is called once per frame
@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
         float X_Rotation = Input.GetAxis("Mouse X");
         float Y_Rotation = Input.GetAxis("Mouse Y");
         PlayerTransform.transform.Rotate(0, X_Rotation, 0);
-        
+
         ii = Camera.transform.localEulerAngles.x;
         if (ii > 334 && ii < 360 || ii > 0 && 79 > ii)
         {
@@ -67,7 +67,14 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W))
         {
-            PlayerTransform.transform.position += dir1 * speed * Time.deltaTime;
+            if (Input.GetKey(KeyCode.LeftControl))
+            {
+                PlayerTransform.transform.position += dir1 * speed * Time.deltaTime * 1.5f;
+            }
+            else
+            {
+                PlayerTransform.transform.position += dir1 * speed * Time.deltaTime;
+            }
         }
         if (Input.GetKey(KeyCode.A))
         {
@@ -82,7 +89,7 @@ public class PlayerController : MonoBehaviour
             PlayerTransform.transform.position += -dir1 * speed * Time.deltaTime;
         }
 
-       
+
 
     }
 }

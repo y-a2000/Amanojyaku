@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SearchCharacter : MonoBehaviour{
+public class SearchCharacter : MonoBehaviour
+{
 
     private MoveEnemy moveEnemy;
 
@@ -36,3 +37,5 @@ public class SearchCharacter : MonoBehaviour{
         }
     }
 }
+
+
