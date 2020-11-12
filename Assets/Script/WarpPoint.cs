@@ -10,6 +10,9 @@ public class WarpPoint : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // ★改良
-        other.gameObject.transform.position = new Vector3(pos.x, pos.y, pos.z);
+        if (other.gameObject.tag == "Player")
+        {
+            other.gameObject.transform.position = new Vector3(pos.x, pos.y, pos.z);
+        }
     }
 }

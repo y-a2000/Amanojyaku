@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 158fe21abdddbdb4abd4fd8e9b793f92
+  - enabled: 1
+    path: Assets/Scenes/Title.unity
+    guid: 6c2e2427f11aab5498634becba518d57
+  - enabled: 1
+    path: Assets/User/Asahina/AsahinaTest.unity
+    guid: c64002f88bd1c4046a5d0a28701fc60a
   m_configObjects: {}
